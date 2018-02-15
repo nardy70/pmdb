@@ -1,0 +1,120 @@
+<!--- TAB SERVIZI CON GRID-->
+<table id="grid_servizi" title="ELENCO SERVIZI" toolbar="#toolbar_servizi"></table>
+<div id="toolbar_servizi">
+	<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true"
+	onclick="newServizio()">Nuovo</a>
+	<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true"
+	onclick="editServizio()">Modifica</a>
+	<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true"
+	onclick="removeServizio()">Rimuovi</a>
+
+	<input id="filtro_nomeservizio" class="easyui-searchbox"
+	data-options="prompt:'Filtra per Nome', searcher:cercaservizio">
+	<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-reload'"
+	plain="true" onclick=pulisciservizio()>Rimuovi Filtro</a>
+
+	<a href="#" class="easyui-linkbutton" iconCls="icon-large-smartart" plain="false"
+	onclick="openCategorie()">Gestisci Categorie</a>
+</div>
+
+<!--- DIALOGO E FORM X NUOVO SERVIZIO -->
+<div id="dlg_servizio" class="easyui-dialog" style="width:320px;height:250px;padding:10px 20px"
+closed="true" buttons="#dlg_servizio-buttons">
+
+	<div class="ftitle">
+		Dettagli Nuovo Servizio
+	</div>
+
+	<form id="form_servizio" method="post" novalidate>
+		<div class="fitem">
+			<label>Categoria:</label>
+			<input id="idc" name="idcategoria" class="easyui-combobox"
+			data-options="
+				editable:false,
+				required:true,
+				panelHeight:'auto',
+				missingMessage:'Campo Obbligatorio',
+				url: 'data/categorie/readCategorie.cfm',
+				valueField: 'id',
+				textField: 'nomecategoria'"
+			/>
+		</div>
+		<div class="fitem">
+			<label>Servizio:</label>
+			<input name="servizio" class="easyui-textbox" data-options="required:true, missingMessage:'Campo Obbligatorio'">
+		</div>
+		<div class="fitem">
+			<label>Unita:</label>
+			<input name="unita" class="easyui-combobox"
+			data-options="
+				editable:false,
+				panelHeight:'auto',
+				valueField: 'label',
+				textField: 'value',
+				data: [{
+				label: 'MINUTI',
+				value: 'MINUTI'
+				},{
+				label: 'UNITA',
+				value: 'UNITA'
+				}]"
+			/>
+		</div>
+		<div class="fitem">
+			<label>Prezzo Servizio:</label>
+			<input name="prezzo" class="easyui-numberbox"
+			data-options="
+				precision: 2,
+				decimalSeparator: ',',
+				groupSeparator: '.'
+				"
+			/>
+		</div>
+	</form>
+</div>
+<div id="dlg_servizio-buttons">
+	<a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok"
+	onclick="saveServizio()" style="width:90px">Salva</a>
+	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel"
+	onclick="javascript:$('#dlg_servizio').dialog('close')" style="width:90px">Cancella</a>
+</div>
+
+<!--- GRID DIALOGO E FORM X NUOVA CATEGORIA -->
+<div id="dlg_categorie" class="easyui-dialog" style="margin:20px 0" closed="true">
+	<table id="grid_categorie" style="width:200px;height:220px" toolbar="#toolbar_categorie"
+	data-options="rownumbers:true, fitColumns:true, singleSelect:true"></table>
+
+	<div id="toolbar_categorie">
+		<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true"
+		onclick="newCategoria()">Nuova</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true"
+		onclick="editCategoria()">Modifica</a>
+	</div>
+</div>
+
+<div id="dlg_categoria" class="easyui-dialog" style="width:300px;height:140px;padding:10px 20px"
+closed="true" buttons="#dlg_categoria-buttons">
+
+	<form id="form_categoria" method="post" novalidate>
+
+		<div class="fitem">
+			<label>Nome:</label>
+			<input name="nomecategoria" class="easyui-textbox" required="true" missingMessage="Campo Obbligatorio">
+		</div>
+
+	</form>
+
+	<div id="dlg_categoria-buttons">
+		<a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok"
+		onclick="saveCategoria()" style="width:90px">Salva</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel"
+		onclick="javascript:$('#dlg_categoria').dialog('close')" style="width:90px">Cancella</a>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="js/servizi/gridServizi.js"></script>
+<script type="text/javascript" src="js/categorie/gridCategorie.js"></script>
+
+<script type="text/javascript" src="js/servizi/crudServizio.js"></script>
+<script type="text/javascript" src="js/categorie/crudCategoria.js"></script>

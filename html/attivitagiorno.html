@@ -1,0 +1,53 @@
+<div style="float:left;">
+	<div id="calendario" class="easyui-calendar" toolbar="#toolbar_calendario"
+	data-options="" style="width:165px;height:165px;margin-right:10px;"></div>
+
+	<div id="toolbar_calendario" >
+		<a href="javascript:void(0)" class="easyui-linkbutton"
+		onclick="oggi()" style="width:80px;margin-top:3px;">Oggi</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton"
+		onclick="compleanni()" style="width:80px;margin-top:3px;">Compleanni</a>
+	</div>
+</div>
+
+
+<table id="grid_attivitagiorno" title="CLIENTI DEL GIORNO" style="height:100%;" toolbar="#toolbar_attivitagiorno"></table>
+<div id="toolbar_attivitagiorno">
+	<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true"
+	onclick="newAttGiorno()">Nuovo</a>
+	<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true"
+	onclick="removeAttGiorno()">Rimuovi</a>
+</div>
+
+
+<!-- DIALOGO FORM X NUOVA ATTIVITA -->
+<div id="dlg_attgiorno" class="easyui-dialog" style="width:310px;height:130px;padding:10px 20px"
+closed="true" inline="true" buttons="#dlg_attgiorno-buttons">
+
+	<form id="form_attgiorno" method="post" novalidate>
+		<label>Seleziona Cliente:</label>
+		<input id="idcliente" name="idcliente" class="easyui-combobox" style="width:200px;"
+		data-options="
+		editable:true,
+		url: 'data/anagrafica/comboBoxCliente.cfm',
+		valueField: 'id',
+		textField: 'nomecognome'
+		">
+
+	</form>
+
+	<div id="dlg_attgiorno-buttons">
+		<a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok"
+		onclick="saveAttGiorno()" style="width:90px">Salva</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel"
+		onclick="javascript:$('#dlg_attgiorno').dialog('close')" style="align: center; width:90px">Cancella</a>
+	</div>
+</div>
+
+
+<!-- DIALOGO COMPLEANNI -->
+<div id="dlg_compleanni" class="easyui-dialog" style="width:250px;height:auto;padding:10px 20px" data-options="top:150" closed="true">
+</div>
+
+<script type="text/javascript" src="js/attivita/gridAttivitaGiorno.js"></script>
+<script type="text/javascript" src="js/attivita/crudAttivitaGiorno.js"></script>

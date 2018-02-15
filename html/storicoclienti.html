@@ -1,0 +1,14 @@
+<table id="grid_elencostoricoclienti" toolbar="#toolbar_elencostoricoclienti"></table>
+
+<div id="toolbar_elencostoricoclienti">
+	<input id="filtro_nomestoricoclienti" class="easyui-searchbox"
+	data-options="prompt:'Filtra per Nome', searcher:cercastoricoclienti">
+	<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-reload', plain:true"
+	onclick=puliscistoricoclienti()>Rimuovi Filtro</a>
+</div>
+
+<!-- DIALOGO STORICO CLIENTE -->
+<link rel="stylesheet" type="text/css" href="css/storicocliente.css">
+<div id="dlg_storicocliente" class="easyui-dialog" style="width:600px;height:500px;padding:10px 20px" closed="true"></div>
+
+<script type="text/javascript" src="js/attivita/gridElencoStoricoClienti.js"></script>

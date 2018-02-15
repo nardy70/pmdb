@@ -1,0 +1,31 @@
+<table id="grid_statisticheclientibad" title="BAD" toolbar="#toolbar_statclientibad"
+    data-options="rownumbers:true, fitColumns:true, pagination:true, pageSize:10"></table>
+    
+    <div id="toolbar_statclientibad">
+      <form id="form_filtrotempobad" method="post" novalidate>
+        <label style="padding: 0 5px 0 10px">FILTRO (Ultimo Periodo): </label>
+        <select name="servprod" class="easyui-combobox" panelHeight="auto">
+          <option value="ultimadataserv" selected="true">Servizi</option>
+          <option value="ultimadataprod">Prodotti</option>
+        </select>
+        <select name="meseanno" class="easyui-combobox" panelHeight="auto">
+          <option value="m" selected="true">Mesi</option>
+          <option value="yyyy">Anni</option>
+        </select>
+        <input class="easyui-combobox" style="width:45px"
+          name="nn"
+          data-options="
+                  url:'data/statistiche/combobox_nn.json',
+                  method:'get',
+                  valueField:'id',
+                  textField:'text',
+                  panelHeight:'auto'
+          ">
+  
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" style="margin-left:10px"
+           plain="true" onclick=applicafiltrotempobad()>Applica</a>
+      </form>
+    </div>
+
+ 
+<script type="text/javascript" src="js/statistiche/gridStatisticheClientiBad.js"></script>

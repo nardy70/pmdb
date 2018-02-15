@@ -1,0 +1,42 @@
+<!-- TAB ATTIVITA CON GRID -->
+<div class="easyui-layout" data-options="fit:true">
+	
+	<div data-options="region:'center',collapsible:false,border:false" >
+
+		<div class="easyui-layout" data-options="fit:true">
+			
+			<div data-options="region:'north',title:'ATTIVITA DEL GIORNO',collapsible:false,href:'html/attivitagiorno.html'" style="height:40%;padding:5px;"></div>
+			
+			<div id="panel_attCli" class="easyui-panel" data-options="region:'center',title:' ',collapsible:false"></div>
+				
+			<div data-options="region:'south'" style="height:55%;">
+				
+				<div class="easyui-layout"  data-options="fit:true">
+					
+					<div data-options="region:'north',title:'PRODOTTI',collapsible:false,href:'html/prodottialcliente.html'" style="height:50%;"></div>
+			
+					<div data-options="region:'center',title:'SERVIZI',collapsible:false,href:'html/servizialcliente.html'" style="height:50%;"></div>
+				
+				</div>
+			
+			</div>
+		
+		</div>
+	
+	</div>
+	
+	<div data-options="region:'east',collapsible:false" style="width:38%;">
+		
+		<div id="aa" class="easyui-accordion" data-options="fit:true,border:false">
+			
+			<div data-options="title:'PRODOTTI',href:'html/elencoprodinatt.html'" ></div>
+			
+			<div data-options="title:'SERVIZI',href:'html/elencoservinatt.html'" ></div>
+			
+			<div data-options="title:'STORICO CLIENTI - (Doppio click per selezionare)',href:'html/storicoclienti.html',selected:true" ></div>
+			
+		</div>
+		
+	</div>
+
+</div>

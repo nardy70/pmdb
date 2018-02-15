@@ -1,0 +1,50 @@
+.ftitle {
+	font-size: 14px;
+	font-weight: bold;
+	padding: 5px 0;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #ccc;
+}
+.fitem {
+	margin-bottom: 5px;
+}
+.fitem label {
+	display: inline-block;
+	width: 80px;
+}
+.fitem input {
+	width: 160px;
+}
+.fitem2 {
+	margin-bottom: 5px;
+}
+.fitem2 label {
+	display: inline-block;
+	width: 80px;
+}
+.fitem2 input {
+	width: 30px;
+}
+.fitem3 label {
+	display: inline-block;
+	width: 27px;
+	margin-left: 15px;
+}
+
+
+.formfattura {
+	margin: 10px;
+	display: inline-block;
+}
+.formfattura #datainput {
+	width: 90px;
+}
+.formfattura #fatturalabel {
+	margin-left: 120px;
+}
+.formfattura #fatturainput {
+	width: 200px;
+}
+.panel-title {
+	text-align: center;
+}

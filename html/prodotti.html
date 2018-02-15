@@ -1,0 +1,230 @@
+<!--- TAB PRODOTTI CON GRID -->
+<div class="easyui-layout" data-options="fit:true">
+
+	<div data-options="region:'center'" border="false">
+
+			<div id="toolbar_prodotti">
+				<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true"
+				onclick="newProdotto()">Nuovo</a>
+				<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true"
+				onclick="editProdotto()">Modifica</a>
+				<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true"
+				onclick="removeProdotto()">Rimuovi</a>
+
+				<input id="filtro_nomeprodotto" class="easyui-searchbox"
+				data-options="prompt:'Filtra per Nome', searcher:cercaprodotto">
+				<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-reload', plain:true"
+				onclick=pulisciprodotto()>Rimuovi Filtro</a>
+
+				<a href="#" class="easyui-linkbutton" iconCls="icon-large-smartart" plain="false"
+				onclick="openMarche()">Gestisci Marche</a>
+				<a href="#" class="easyui-linkbutton" iconCls="icon-large-smartart" plain="false"
+				onclick="newFattura()">Gestisci Magazzino</a>
+			</div>
+
+			<table id="grid_prodotti" class="easyui-datagrid" toolbar="#toolbar_prodotti"></table>
+		
+	</div>
+
+	<!--- DETTAGLIO MAGAZZINO  -->
+	<div data-options="region:'east'" style="width:43%;" border="false">
+		
+		<div class="easyui-accordion" style="width:99%;height:620px;">
+
+			<div id="pn_dettagliomagaz" title="Dettaglio Magazzino" data-options="collapsible:false"></div>
+		
+			<div id="pn_prodottoinmagazzino" title="QUANTITA' INSERITE IN MAGAZZINO" style="padding:2px">
+				<table id="grid_prodottoinmagazzino" class="easyui-datagrid" toolbar="#toolbar_prodottoinmagazzino-buttons"
+				fitColumns="true" singleSelect="true"></table>
+				<div id="toolbar_prodottoinmagazzino-buttons">
+					<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="insert()">Inserisci in Magazzino</a>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="removeselez()">Elimina Selezione</a>
+				</div>
+			</div>
+
+			<div id="pn_prelievomagazzino" title="QUANTITA' PRELEVATE DAL MAGAZZINO" style="padding:2px">
+				<table id="grid_prelievomagazzino" class="easyui-datagrid" toolbar="#toolbar_prelievomagazzino-buttons"
+				fitColumns="true" singleSelect="true"></table>
+				<div id="toolbar_prelievomagazzino-buttons">
+					<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="insert2()">Preleva dal Magazzino</a>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="removeselez2()">Elimina selezione</a>
+				</div>
+			</div>
+
+			<div id="pn_venditeaiclienti" title="VENDITE AI CLIENTI" style="padding:2px" data-options="selected:true">
+				<table id="grid_venditeaiclienti"></table>
+			</div>
+			
+			<div id="orainmagazzino" title="Ora in Magazzino" data-options="collapsible:false"></div>
+
+		</div>
+		
+	</div>
+
+</div>
+
+<!--- DIALOGO E FORM X NUOVO PRODOTTO  -->
+<div id="dlg_prodotto" class="easyui-dialog" style="width:320px;height:340px;padding:10px 20px"
+closed="true" buttons="#dlg_prodotto-buttons">
+
+	<div class="ftitle">
+		Dettagli Nuovo Prodotto
+	</div>
+
+	<form id="form_prodotto" method="post" novalidate>
+		<div class="fitem">
+			<label>Marca:</label>
+			<input id="idm" name="idmarca" class="easyui-combobox"
+			data-options="
+				editable:false,
+				required:true,
+				missingMessage:'Campo Obbligatorio',
+				url: 'data/marche/readMarche.cfm',
+				valueField: 'id',
+				textField: 'nomemarca'"
+			/>
+		</div>
+		<div class="fitem">
+			<label>Nome:</label>
+			<input name="nome" class="easyui-textbox" data-options="required:true, missingMessage:'Campo Obbligatorio'">
+		</div>
+		<div class="fitem">
+			<label>Codice:</label>
+			<input name="barcode" class="easyui-numberbox">
+		</div>
+		<div class="fitem">
+			<label>Prezzo Cliente:</label>
+			<input name="prezzocliente" class="easyui-numberbox"
+			data-options="
+				precision: 2,
+				decimalSeparator: ',',
+				groupSeparator: '.'"
+			/>
+		</div>
+		<div class="fitem">
+			<label>Prezzo Fattura:</label>
+			<input name="prezzofattura" class="easyui-numberbox"
+			data-options="
+				precision: 2,
+				decimalSeparator: ',',
+				groupSeparator: '.'"
+			/>
+		</div>
+		<div class="fitem">
+			<label>Misura:</label>
+			<input name="misura" class="easyui-textbox">
+		</div>
+		<div class="fitem">
+			<label>Unita:</label>
+			<input name="unita" class="easyui-combobox"
+			data-options="
+				editable:false,
+				panelHeight:'auto',
+				valueField: 'label',
+				textField: 'value',
+				data: [{
+					label: 'ml',
+					value: 'ml'
+					},{
+					label: 'gr',
+					value: 'gr'
+					},{
+					label: 'nr',
+					value: 'nr'
+				}]"
+			/>
+		</div>
+		<div class="fitem">
+			<label>No Vendita:</label>
+			<input name="novendita" type="checkbox">
+		</div>
+	</form>
+
+	<div id="dlg_prodotto-buttons">
+		<a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok"
+		onclick="saveProdotto()" style="width:90px">Salva</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel"
+		onclick="javascript:$('#dlg_prodotto').dialog('close')" style="width:90px">Cancella</a>
+	</div>
+</div>
+
+<!--- DIALOGO GRID X MARCHE -->
+<div id="dlg_marche" class="easyui-dialog" style="width:230px;height:500px;margin:20px 0" closed="true">
+	<table id="grid_marche" toolbar="#toolbar_marche"
+	data-options="rownumbers:true, fitColumns:true, singleSelect:true"></table>
+
+	<div id="toolbar_marche">
+		<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true"
+		onclick="newMarca()">Inserisci</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true"
+		onclick="editMarca()">Modifica</a>
+	</div>
+</div>
+
+<!--- DIALOGO FORM X NUOVA MARCA -->
+<div id="dlg_marca" class="easyui-dialog" style="width:310px;padding:10px 20px"
+closed="true" buttons="#dlg_marca-buttons">
+
+	<form id="form_marca" method="post" novalidate>
+		<div class="fitem">
+			<label>Nome:</label>
+			<input name="nomemarca" class="easyui-textbox">
+		</div>
+	</form>
+
+	<div id="dlg_marca-buttons">
+		<a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok"
+		onclick="saveMarca()" style="width:90px">Salva</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel"
+		onclick="javascript:$('#dlg_marca').dialog('close')" style="width:90px">Cancella</a>
+	</div>
+</div>
+
+<!--- DIALOGO FORM FATTURA -->
+<div id="dlg_fattura" class="easyui-dialog" style="width:900px; height:595px;" closed="true" buttons="#dlg_fattura-buttons" data-options="left:50, top:50, onBeforeClose:function(){reload();}" title="NUOVA FATTURA">
+
+	<div class="easyui-layout" fit="true">
+
+		<div region="center" style="width:60%;" border="false" >
+			<div class="easyui-layout" fit="true">
+
+				<div region="north" class="formfattura" style="height:22px;" border="false">
+					<label>Data:</label>
+					<input id="datainput" name="data" class="easyui-datebox" required="true" missingMessage="Campo Obbligatorio">
+					
+					<label id="fatturalabel">Nr.Fattura:</label>
+					<input id="fatturainput" name="numfattura" class="easyui-textbox">
+				</div>
+
+				<div region="center" style="padding:2px;" border="false">
+		            <table id="grid_magbyfat" class="easyui-datagrid" name="tabella" toolbar="#toolbar_magbyfat-buttons"></table>
+
+		            <div id="toolbar_magbyfat-buttons">
+						<a href="#" class="easyui-linkbutton" iconCls="icon-add" onclick="insertProdotto()">Inserisci Prodotto</a>
+						<a href="#" class="easyui-linkbutton" iconCls="icon-reload" id="resetta" onclick="reload()">Resetta Form</a>
+					</div>
+		        </div>
+
+	    	</div>
+	    </div>
+
+	    <div region="east" style="width:40%; padding:2px;" border="false">
+			<table id="grid_fattura" title="ULTIME FATTURE INSERITE" class="easyui-datagrid"></table>
+		</div>
+
+	</div>
+
+</div>
+
+
+<script type="text/javascript" src="js/prodotti/gridProdotti.js"></script>
+<script type="text/javascript" src="js/prodotti/gridVenditeAiClienti.js"></script>
+<script type="text/javascript" src="js/magazzino/gridProdottoInMagazzino.js"></script>
+<script type="text/javascript" src="js/magazzino/gridPrelievoMagazzino.js"></script>
+<script type="text/javascript" src="js/marche/gridMarche.js"></script>
+
+<script type="text/javascript" src="js/prodotti/crudProdotto.js"></script>
+<script type="text/javascript" src="js/magazzino/crudProdottoInMagazzino.js"></script>
+<script type="text/javascript" src="js/magazzino/crudPrelievoMagazzino.js"></script>
+<script type="text/javascript" src="js/marche/crudMarca.js"></script>
+

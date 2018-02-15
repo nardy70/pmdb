@@ -1,0 +1,93 @@
+<!-- TAB ANAGRAFICA CON GRID -->
+<table id="grid_anagrafica" title="ELENCO CLIENTI" toolbar="#toolbar_anagrafica"></table>
+
+<div id="toolbar_anagrafica">
+	<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true"
+	onclick="newCliente()">Inserisci</a>
+	<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true"
+	onclick="editCliente()">Modifica</a>
+	<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true"
+	onclick="removeCliente()">Rimuovi</a>
+
+	<input id="filtro_nomecliente" class="easyui-searchbox"
+	data-options="prompt:'Filtra per Nome', searcher:cercacliente">
+	<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-reload'"
+	plain="true" onclick=puliscicliente()>Rimuovi Filtro</a>
+</div>
+
+<!-- DIALOGO E FORM X NUOVO CLIENTE -->
+<div id="dlg_anagrafica" class="easyui-dialog" style="width:350px;height:450px;padding:10px 20px"
+closed="true" buttons="#dlg_anagrafica-buttons">
+
+	<div class="ftitle">
+		Informazioni Nuovo Cliente
+	</div>
+
+	<form id="form_anagrafica" method="post" novalidate>
+		<div class="fitem">
+			<label>Nome:</label>
+			<input name="nome" class="easyui-textbox" required="true" missingMessage="Campo Obbligatorio">
+		</div>
+		<div class="fitem">
+			<label>Cognome:</label>
+			<input name="cognome" class="easyui-textbox" required="true" missingMessage="Campo Obbligatorio">
+		</div>
+		<div class="fitem">
+			<label>Email:</label>
+			<input name="email" class="easyui-textbox" validType="email" invalidMessage="Email non Corretta">
+		</div>
+		<div class="fitem">
+			<label>Cellulare:</label>
+			<input name="cellulare" class="easyui-textbox" data-options="validType:'mobile'">
+		</div>
+		<div class="fitem">
+			<label>Telefono:</label>
+			<input name="telefono" class="easyui-textbox" data-options="validType:'phone'">
+		</div>
+		<div class="fitem">
+			<label>Compleanno:</label>
+			<input name="compleanno" class="easyui-datebox">
+		</div>
+		<div class="fitem">
+			<label>Professione:</label>
+			<input name="professione" class="easyui-textbox">
+		</div>
+		<div class="fitem">
+			<label>Via:</label>
+			<input name="via" class="easyui-textbox">
+		</div>
+		<div class="fitem">
+			<label>Citta:</label>
+			<input name="citta" class="easyui-textbox">
+		</div>
+		<div class="fitem2">
+			<label>Provincia:</label>
+			<input name="provincia" class="easyui-textbox" data-options="validType:'prov'">
+		<span class="fitem3">
+			<label>Sesso:</label>
+			<select name="sesso" class="easyui-combobox" required="true" missingMessage="Campo Obbligatorio" panelHeight="45">
+				<option value="M">Maschio</option>
+				<option value="F">Femmina</option>
+			</select>
+		</span>
+		</div>
+		<div class="fitem">
+			<label>Cap:</label>
+			<input name="cap" class="easyui-numberbox" data-options="validType:'zip'">
+		</div>
+		<div class="fitem">
+			<label>Registrato il:</label>
+			<input id="registrazione" name="registrazione" type="text" class="easyui-datebox">
+		</div>
+	</form>
+
+	<div id="dlg_anagrafica-buttons">
+		<a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok"
+		onclick="saveCliente()" style="width:90px">Salva</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel"
+		onclick="javascript:$('#dlg_anagrafica').dialog('close')" style="width:90px">Cancella</a>
+	</div>
+</div>
+
+<script type="text/javascript" src="js/anagrafica/gridAnagrafica.js"></script>
+<script type="text/javascript" src="js/anagrafica/crudAnagrafica.js"></script>

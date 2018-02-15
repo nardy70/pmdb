@@ -1,0 +1,18 @@
+<table id="grid_statisticheclientitop" title="TOP" toolbar="#toolbar_statclientitop"
+    data-options="rownumbers:true, fitColumns:true, pagination:true, pageSize:10"></table>
+
+    <div id="toolbar_statclientitop">
+      <form id="form_filtrotempotop" method="post" novalidate>
+          <label style="padding: 0 5px 0 10px">Data Inizio:</label>
+          <input name="di" class="easyui-datebox" style="width:100px">
+      
+          <label style="margin-left:10px">Data Fine:</label>
+          <input name="df" class="easyui-datebox" style="width:100px">
+      
+          <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" style="margin-left:10px"
+             plain="true" onclick=applicafiltrotempotop()>Applica</a>
+      </form>
+    </div>
+
+
+<script type="text/javascript" src="js/statistiche/gridStatisticheClientiTop.js"></script>

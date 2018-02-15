@@ -1,0 +1,52 @@
+<div style="height:16%;padding:5px">
+
+		<span style="display:inline-block;padding-right:10px;">
+				<table id="grid_fichemediaservizi" title='FICHE MEDIA SERVIZI' style="width:160px;" data-options="fitColumns:true"></table>
+		</span>
+
+		<span style="display:inline-block;padding-right:10px;">
+				<table id="grid_fichemediatotale" title='FICHE MEDIA TOTALE' style="width:160px" data-options="rownumbers:false"></table>
+		</span>
+
+		<span style="display:inline-block;padding-right:10px;">
+				<table id="grid_percentualevendite" title='VENDITE' style="width:90px" data-options="rownumbers:false,fitColumns:true"></table>
+		</span>
+
+		<span style="display:inline-block;margin-left:123px;">
+				<div id="statpers" class="easyui-panel" title='STATISTICHE PERSONALIZZATE (Seleziona le Date e premi Ok)' data-options="border:true" style="width:450px;height:92px;padding: 20px 10px">
+						
+						<form id="form_statpers" method="post">
+								<label>Data Inizio:</label>
+								<input name="datainizio" class="easyui-datebox" style="width:100px">
+						
+								<label style="margin-left:10px">Data Fine:</label>
+								<input name="datafine" class="easyui-datebox" style="width:100px">
+						
+								<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="margin-left:20px" onclick="statpers()">Ok</a>
+						</form>
+						
+				</div>
+		</span>
+
+</div>
+
+<hr>
+
+<div style="padding:5px;">
+
+	<table title="STATISTICHE ANNUALI" id="grid_statisticheanno"></table>
+
+	<br>
+
+	<table title="STATISTICHE MENSILI" id="grid_statistichemese"></table>
+
+</div>
+
+<!-- DIALOGO STATISTICHE PERSONALIZZATE -->
+<div id="dlg_statpers" class="easyui-dialog" style="width:80%;height:auto;padding:5px" data-options="top:200" closed="true"></div>
+
+
+<script type="text/javascript" src="js/statistiche/statPers.js"></script>
+<script type="text/javascript" src="js/statistiche/gridFiches.js"></script>
+<script type="text/javascript" src="js/statistiche/gridStatisticheAnno.js"></script>
+<script type="text/javascript" src="js/statistiche/gridStatisticheMese.js"></script>

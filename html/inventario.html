@@ -1,0 +1,29 @@
+<div style="float:left;width:35%;">
+	<div id="calendario_inv" class="easyui-calendar" toolbar="#toolbar_calendario" data-options="" style="width:220px;height:180px;"></div>
+			
+	<div id="toolbar_calendario" >
+		<a href="javascript:void(0)" class="easyui-linkbutton"
+			onclick="oggi_inv()" style="width:220px;height:20px;margin-top:3px;">Aggiorna Inventario (OGGI)</a>
+	</div>
+	
+	<hr>
+	
+	<div id="tabella" style="width:220px;margin-left:2px;">
+		<table id="" style="height:401px;">
+		</table>
+	</div>
+</div>
+
+
+<div id="panel_inventarioxdata" class="easyui-panel" title="INVENTARIO DI OGGI" style="float:left;width:54%;">
+	<div id="toolbar_inventarioxdata">
+		<a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true"
+		onclick="saveInv()">Salva</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-print" plain="true"
+		onclick="printInv()">Stampa</a>
+	</div>
+
+	<table id="grid_inventarioxdata"  style="height:590px;" toolbar="#toolbar_inventarioxdata"></table>
+</div>
+
+<script type="text/javascript" src="js/inventario/gridInventarioXData.js"></script>

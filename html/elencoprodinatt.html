@@ -1,0 +1,20 @@
+<table id="grid_elencoprodinatt" toolbar="#toolbar_elencoprodinatt"></table>
+
+<div id="toolbar_elencoprodinatt">
+	<input id="filtro_nomeprodinatt" class="easyui-searchbox"
+	data-options="prompt:'Filtra per Nome', searcher:cercaprodinatt">
+	<input id="filtro_barcodeprodinatt" class="easyui-searchbox"
+	data-options="prompt:'Filtra Codice', searcher:barcodeprodinatt">
+	<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-reload', plain:true"
+	onclick=pulisciprodinatt()>Clear</a>
+	<a href="#" class="easyui-linkbutton c4" style="width:65px"
+	onclick=venduti()>Venduti</a>
+</div>
+
+<script type="text/javascript" src="js/attivita/gridElencoProdInAtt.js"></script>
+<script type="text/javascript" src="js/attivita/gridProdottoVendutoAiClienti.js"></script>
+
+<!-- DIALOGO PRODOTTO VENDUTO AI CLIENTI -->
+<div id="dlg_prodottovendutoaiclienti" class="easyui-dialog" style="width:580px;height:400px" closed="true">
+	<table id="grid_prodottovendutoaiclienti"></table>
+</div>

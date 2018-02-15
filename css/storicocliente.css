@@ -1,0 +1,27 @@
+.titolo1 {
+	font-size: 13px;
+	font-weight: bold;
+}
+.titolo2 {
+	font-size: 13px;
+	font-style: italic;
+	color: #666666;
+}
+.testo {
+	font-size: 13px;
+}
+.tabellabody {
+	color: #0000FF;
+}
+#data {
+	background-color: black;
+	color: white;
+	text-align: center;
+	padding: 5px;
+}
+#cornice {
+	background-color: #FFE5B0;
+	color: black;
+	text-align: left;
+	padding: 5px;
+}
