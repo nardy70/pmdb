@@ -12,9 +12,7 @@ $('#tt').tabs({
         		break;
 
         	case 4:
-	        	$('#grid_fichemediaservizi').datagrid('reload');
-	        	$('#grid_fichemediatotale').datagrid('reload');
-	        	$('#grid_percentualevendite').datagrid('reload');
+	        	$('#grid_statistichegestione').datagrid('reload');
 	        	$('#grid_statisticheanno').datagrid('reload');
 	        	$('#grid_statistichemese').datagrid('reload');
 	        	$('#grid_statisticheclientibad').datagrid('reload');
