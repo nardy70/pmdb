@@ -6,7 +6,7 @@ $(document).ready(function () {
 		striped:true,
 	    columns:[[
 	    	{field:'anno',title:'Anno',align:'center'},
-			{field:'mese',title:'Mese'},
+			{field:'mese',title:'Mese',align:'center'},
 	    	{field:'passaggi',title:'Passaggi',align:'center'},
 			{field:'gg_lavoro',title:'gg Lavoro',align:'center'},
 	    	{field:'incasso_servizi',title:'Incasso Servizi',align:'center',

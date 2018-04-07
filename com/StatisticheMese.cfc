@@ -2,6 +2,7 @@ component output=false persistent=true table="statistiche_mese" {
 	property name="id" ormtype="string" fieldtype="id";
 	property name="anno" ormtype="int";
 	property name="mese" ormtype="string";
+	property name="nmese" ormtype="string";
  	property name="passaggi" ormtype="int";
 	property name="gg_lavoro" ormtype="int";
 	property name="incasso_servizi" ormtype="big_decimal";
